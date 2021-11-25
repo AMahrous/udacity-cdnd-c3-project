@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 RUN npm install --save-dev @types/node @types/validator
-RUN npm install sequelize reflect-metadata sequelize-typescript
+RUN npm install --save-dev sequelize reflect-metadata sequelize-typescript
 RUN npm install --save sequelize-cli
 RUN npm ci 
 # Bundle app source

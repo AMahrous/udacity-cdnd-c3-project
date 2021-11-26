@@ -23,9 +23,8 @@ script:
 
 after_success:
   - docker logout
-  - echo "$D_PASSWORD" | docker login -u "$D_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push ahmedmahrousmahmoud/reverseproxy:latest
   - docker push ahmedmahrousmahmoud/udagram-api-user:latest
   - docker push ahmedmahrousmahmoud/udagram-api-feed:latest
   - docker push ahmedmahrousmahmoud/udagram-frontend:latest
-

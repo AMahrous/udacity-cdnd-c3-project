@@ -19,12 +19,12 @@ script:
   - docker tag reverseproxy ahmedmahrousmahmoud/reverseproxy:latest
   - docker tag udagram-api-user ahmedmahrousmahmoud/udagram-api-user:latest
   - docker tag udagram-api-feed ahmedmahrousmahmoud/udagram-api-feed:latest
-  - docker tag udagram-frontend ahmedmahrousmahmoud/udagram-frontend:local:latest
+  - docker tag udagram-frontend ahmedmahrousmahmoud/udagram-frontend:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push ahmedmahrousmahmoud/reverseproxy:v1
-  - docker push ahmedmahrousmahmoud/udagram-api-user:v1
-  - docker push ahmedmahrousmahmoud/udagram-api-feed:v1
-  - docker push ahmedmahrousmahmoud/udagram-frontend:local:v1
+  - docker push ahmedmahrousmahmoud/reverseproxy:v2
+  - docker push ahmedmahrousmahmoud/udagram-api-user:v2
+  - docker push ahmedmahrousmahmoud/udagram-api-feed:v2
+  - docker push ahmedmahrousmahmoud/udagram-frontend:v2
 

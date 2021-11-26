@@ -27,3 +27,4 @@ after_success:
   - docker push ahmedmahrousmahmoud/udagram-api-user:latest
   - docker push ahmedmahrousmahmoud/udagram-api-feed:latest
   - docker push ahmedmahrousmahmoud/udagram-frontend:latest
+

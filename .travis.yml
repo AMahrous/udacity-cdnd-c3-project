@@ -22,6 +22,7 @@ script:
   - docker tag udagram-frontend:local ahmedmahrousmahmoud/udagram-frontend:latest
 
 after_success:
+  - docker logout
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push ahmedmahrousmahmoud/reverseproxy:latest
   - docker push ahmedmahrousmahmoud/udagram-api-user:latest

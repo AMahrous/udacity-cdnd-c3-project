@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: udagram-frontend
+        image: ahmedmahrousmahmoud/udagram-frontend
+        ports:
+          - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: env-configmap-file
+        env:
+          - name: POSTGRES_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: env-secret-file
+                key: POSTGRES_USERNAME
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: env-secret-file
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_HOST
+            value: "postgres.cpfmjb1jkwde.us-east-1.rds.amazonaws.com"
+          - name: POSTGRES_DB
+            value: "postgres"
+          - name: AWS_BUCKET
+            value: "mahrous-udacity-cdnd-p3-dev"
+          - name: AWS_REGION
+            value: "us-east-1"
+          - name: AWS_PROFILE
+            value: "default"
+          - name: JWT_SECRET
+            value: "simpleJwtSecret"
+          - name: URL
+            value: "http://localhost:8100"
+        volumeMounts:
+          - name: credentials
+            mountPath: "/.aws"
+            readOnly: true
+      volumes:
+        - name: credentials
+          secret:
+            secretName: aws-secret-file
+      

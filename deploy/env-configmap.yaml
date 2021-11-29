@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-configmap-file
+data:
+    POSTGRES_HOST: "postgres.cpfmjb1jkwde.us-east-1.rds.amazonaws.com"
+    POSTGRES_DB: "postgres"
+    AWS_BUCKET: "mahrous-udacity-cdnd-p3-dev"
+    AWS_REGION: "us-east-1"
+    AWS_PROFILE: "default"
+    JWT_SECRET: "simpleJwtSecret"
+    URL: "http://localhost:8100"
+
